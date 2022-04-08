@@ -9,38 +9,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-
-    <div>
-        <h1>Create your task </h1>
-        <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
-        <select id="categories-list" title="All">
-        </select>
-
-        <input type="text" name="new-task" id="new-task" placeholder="* Add a new task">
-    </div>
-
-    <div>
-        <h1>Create your category </h1>
-        <input type="text" name="new-category" id="new-category" placeholder="* Add a new category">
-    </div>
-
-    <!-- FILTERING DIV -->
-    <div>
-        <h1>filter by category</h1>
-        <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
-        <select id="categories-list-filter" title="All">
-        </select>
-        <!-- DONE for filtering thing -->
+<body class = "todo-item">
+    <div class = "inputs">
         <div>
-            <input type="checkbox" name="done" id="done">
-            <label for="done">Filter by done</label>
+            <h1 class = "font">Create your task </h1>
+            <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
+            <select id="categories-list" title="All">
+            </select>
+
+            <input type="text" name="new-task" id="new-task" placeholder="* Add a new task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <div>
+            <h1 class = "font">Create your category </h1>
+            <input type="text" name="new-category" id="new-category" placeholder="* Add a new category">
+            <button onclick="addCategory()">Add Category</button>
         </div>
     </div>
-    <hr>
+    <!-- FILTERING DIV -->
+    <div class = "list">
+        <div>
+            <h1 class = "font">Filter By Category</h1>
+            <!-- KEEP THE SELECT EMPTY. IT WILL BE FILLED BY JS  -->
+            <select id="categories-list-filter" title="All">
+            </select>
+            <button id="btn" onclick="filterTasks()">Filter Task By Category</button>
+            <!-- DONE for filtering thing -->
+            <div>
+                <input type="checkbox" name="done" id="done" onclick="filterTasks()" onclick="taskChecked()">
+                <label class = "font" for="done">Filter by done</label>
+            </div>
+        </div>
+        <hr>
 
-    <!-- KEEP THE DIV EMPTY. IT WILL BE FILLED BY JS  -->
-    <div id="tasks-list"></div>
+        <!-- KEEP THE DIV EMPTY. IT WILL BE FILLED BY JS  -->
+        <div id="tasks-list" class = "border"></div>
+    </div>
 
 
 </body>

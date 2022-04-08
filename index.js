@@ -5,12 +5,6 @@ const CATEGORY_FILTER = "categories-list-filter";
 let tasks = [];
 let categories = [];
 
-// REMOVE ME: SAMPLE FILLING
-tasks = [
-  { id: 0, title: "Game of thrones", category: "Movies", done: false },
-  { id: 1, title: "Toy Story 4", category: "Movies", done: false },
-];
-
 categories = ["Movies", "Groceries"];
 // SAMPLE
 renderCategories(categories, CATEGORY_SELECTOR);
@@ -20,26 +14,67 @@ renderTasks(tasks, "tasks-list");
 function taskChecked(taskId, checked) {
   // implement the delete task.
   // You are given the task id
-  console.log(`${checked ? "" : "UN"}CHECKED TASK`, taskId);
+  if(checked === true){
+    tasks[taskId].done = true;
+    renderTasks(tasks, "tasks-list");
+  }
+
+  if(checked === false){
+    tasks[taskId].done = false;
+    renderTasks(tasks, "tasks-list");
+  }
 }
 
 function addTask() {
   const selectedCategory = getSelectedCategoryById(CATEGORY_SELECTOR);
   const taskTitle = getNewTaskText();
   // continue the code here
-  alert(`Category: ${selectedCategory} | Task: ${taskTitle}`);
+  tasks.push({ id: tasks.length, title: taskTitle, category: selectedCategory, done: false });
+
+  renderTasks(tasks, "tasks-list");
 }
 
 function addCategory() {
   const newCategory = getNewCategoryText();
   // continue the code here
-  alert(`New category was added: ${newCategory}`);
+  categories.push(newCategory);
+  renderCategories(categories, CATEGORY_SELECTOR);
+  renderCategories(categories, CATEGORY_FILTER);
 }
 
 function filterTasks() {
   const selectedCategory = getSelectedCategoryById(CATEGORY_FILTER);
   const done = getFilteredDone();
-  // continue the code here
-  // REMOVE ME: sample alert
-  alert(`Category: ${selectedCategory} | done: ${done}`);
+  
+  const button = document.getElementById("btn");
+  button.addEventListener("click", renderTasks(tasks.filter(C => C.category === selectedCategory), "tasks-list"));
+  
+  const checkBox = document.querySelector("#done");
+  if(checkBox.checked === true){
+    renderTasks(tasks.filter(D => D.done === done), "tasks-list");
+    // if (checkBox.checked === false) {
+    //   renderTasks(tasks, "tasks-list");
+    // }
+  }
+  // else if (checkBox.checked === false) {
+  //   renderTasks(tasks, "tasks-list");
+  // }
+  
+  // const button = document.getElementById("btn");
+  
+  
+  // const checkBox = document.querySelector("#done");
+  // if(checkBox.checked === true && button.clicked === true){
+  //   renderTasks(tasks.filter(C => C.category === selectedCategory), "tasks-list");
+  //   renderTasks(tasks.filter(D => D.done === done), "tasks-list");
+  // }
+  // else if(checkBox.checked === true && button.clicked === false){
+  //   renderTasks(tasks.filter(D => D.done === done), "tasks-list");
+  // }
+  // else if(checkBox.checked === false && button.clicked === true){
+  //   renderTasks(tasks.filter(C => C.category === selectedCategory), "tasks-list");
+  // }
+  // else{renderTasks(tasks, "tasks-list");}
+
+  // renderTasks(tasks, "tasks-list");
 }

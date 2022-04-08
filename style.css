@@ -1,3 +1,38 @@
+body {
+  background-color: #dad6d6;
+}
+
 .todo-item {
   display: flex;
+  flex-direction: row;
+}
+
+button {
+  color: antiquewhite;
+  background-color: #ee6055;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding: 150px;
+  height: 100px;
+}
+
+.list {
+  padding: 150px;
+  align-items: flex-start;
+}
+
+.border {
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 0;
+  background-color: #f7f7f7;
+}
+
+.font {
+  color: #00000e;
+  font-family: Helvetica, Arial, sans-serif;
 }
